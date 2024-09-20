@@ -160,7 +160,7 @@ You can access the repository and download the rate files using the following li
 
 To access an example of a rate object, you can download it by following the link below:
 
-[Download Example Rate Object](https://github.com/example/repository/raw/main/rate_object.csv)
+[Download Example Rate Object](https://github.com/filhoalm/NewApc/blob/main/colorectal/data/male_usa.csv)
 
 
 :::{.callout-note}
