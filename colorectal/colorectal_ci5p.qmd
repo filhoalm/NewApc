@@ -11,18 +11,25 @@ This workflow provides a comprehensive analysis of colorectal cancer incidence r
 
 Our goal is to explore the cohort pattern and annual percent changes of colorectal cancer in selected countries, specifically focusing on the social generation effect.
 
+## Podcast
+
+You can listen to an informative podcast related to advances in statistical methods here:
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/adalberto-miranda-filho/advances-in-statistical&color=%23ff5500&inverse=false&auto_play=false&show_user=true"></iframe>
+
+
 
 <!-- -   **HR-positive/HER2-negative (HR+/HER2-)**: HR+/HER2- -->
 
 ## Methods
 
-#### Datasource
+#### Data source
 
 Cancer Incidence in Five Continents plus. [Data is freely available here:](https://ci5.iarc.fr/ci5plus/)
 
 #### Transforming CI5 Data into a 'rate' Object
 
-The CI5 database provides data in a long format, which is not directly compatible with the WebTool for analysis. Our primary task involves transforming these datasets into a 'rate' object format. 
+The CI5 database provides data in a long format, which is not directly compatible with the WebTool for analysis. Our primary task involves transforming these datasets into a 'rate' object format.
 
 For more detailed information on the structures and functionalities of 'rate' objects and best practices for analyzing cancer registry data, please consult the author of these workflow.
 
@@ -162,32 +169,25 @@ To access an example of a rate object, you can download it by following the link
 
 [Download Example Rate Object](https://github.com/filhoalm/NewApc/blob/main/colorectal/data/male_usa.csv)
 
-
-:::{.callout-note}
+::: callout-note
 -   Please note that the file is available in CSV format.
 :::
 
-
-
-#
-
+# 
 
 ### Colorectal cancer rate objects
 
 A dedicated GitHub folder has been created, containing all rate files segmented by population and sex (coming soon...).
 
-
 ### R Webtool functions
 
-Repository that content all the functins in R language are available [here](https://github.com/filhoalm/Breast_cancer/tree/main/RCode%208-16-22/APC/"). 
+Repository that content all the functins in R language are available [here](https://github.com/filhoalm/Breast_cancer/tree/main/RCode%208-16-22/APC/%22).
 
 For more detailed insights into the capabilities and applications of the WebTool functions, you are encouraged to consult the following reference:
 
 ["A Web Tool for Age-Period-Cohort Analysis of Cancer Incidence and Mortality Rates"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4221491/)
 
 ["Advances in statistical methods for cancer surveillance research: an age-period-cohort perspective"](https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2023.1332429/full)
-
-
 
 ```{r, message=FALSE, warning=FALSE}
 #my_path <- "https://github.com/filhoalm/Breast_cancer/tree/main/RCode%208-16-22/APC/"
@@ -216,23 +216,23 @@ For more detailed insights into the capabilities and applications of the WebTool
 
 ```
 
-:::{.callout-note}
--   You need to dowload the APC folder to your local machine and change `mypath` 
+::: callout-note
+-   You need to dowload the APC folder to your local machine and change `mypath`
 :::
 
 #### csv2rates Function
 
 The `csv2rates` function is a data transformation utility that converts data from CSV (Comma-Separated Values) files into the standardized 'rate' object format required by WebTool:
 
-- **Reading the CSV file** that contains the epidemiological data.
-- **Ensuring** that the data adheres to the required structure, including appropriate variable names and formatting.
-- **Calculating rates** such as incidences or mortality rates.
-- **Returning a 'rate' object** that can be directly utilized in subsequent WebTool analyses.
+-   **Reading the CSV file** that contains the epidemiological data.
+-   **Ensuring** that the data adheres to the required structure, including appropriate variable names and formatting.
+-   **Calculating rates** such as incidences or mortality rates.
+-   **Returning a 'rate' object** that can be directly utilized in subsequent WebTool analyses.
 
 This conversion is critical for ensuring that the data can be analyzed accurately and efficiently within the WebTool framework.
 
-
 #### apc2fit Function
+
 The `apc2fit` function implements the Age-Period-Cohort (APC) model fitting on the 'rate' objects. The APC model is widely used in epidemiology to examine how particular outcomes change over time and across different cohorts. This function allows researchers to:
 
 Estimable age-period-cohort (APC) parameters and functions calculated by the web tool are summarized below, along with their respective nomenclature and interpretations.
@@ -285,12 +285,11 @@ kable(apc_table_data, format = "html", caption = "Table 1: Estimable APC Paramet
 
 
 ```
- Source: ["A Web Tool for Age-Period-Cohort Analysis of Cancer Incidence and Mortality Rates"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4221491/)
- 
- 
- 
+
+Source: ["A Web Tool for Age-Period-Cohort Analysis of Cancer Incidence and Mortality Rates"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4221491/)
+
 ## APC Parameters and Functions
- 
+
 ```{r, message=FALSE, warning=FALSE}
 
 # AUS
@@ -311,8 +310,7 @@ kable(apc_table_data, format = "html", caption = "Table 1: Estimable APC Paramet
 
 ```
 
-
-## Cohort Rate Ratios, CRR(c | c0)
+## Cohort Rate Ratios, CRR(c \| c0)
 
 ```{r, message=FALSE, warning=FALSE}
 
@@ -413,7 +411,7 @@ ggplot(country, aes(x = Age, y = rr, color = sex, fill = sex)) +
 
 ```
 
-## Fitted Temporal Trends, FTT(p | a0)
+## Fitted Temporal Trends, FTT(p \| a0)
 
 ```{r, message=FALSE, warning=FALSE}
 # United States:
@@ -452,5 +450,3 @@ ggplot(country, aes(x = Period, y = Rate, color = sex, linetype = sex)) +
         axis.text.y = element_text(size = 7))  # Adjust the size of y-axis text
 
 ```
-
-
